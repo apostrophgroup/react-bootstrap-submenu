@@ -34,7 +34,7 @@ export class NavDropdownMenu extends React.Component<Props> {
   render() {
     return (
       <NavDropdown
-        className={this.props.className}
+        className={this.props.className ? this.props.className + ' dropdown-submenu-root' : 'dropdown-submenu-root' }
         ref={(ref) => (this.refElement = ref)}
         title={this.props.title}
         id={this.props.id}
@@ -52,7 +52,9 @@ export class NavDropdownMenu extends React.Component<Props> {
         flip={this.props.flip}
         focusFirstItemOnShow={this.props.focusFirstItemOnShow}
       >
-        {this.props.children}
+        <div className="dropdown-scroll-container">
+          {this.props.children}
+        </div>
       </NavDropdown>
     );
   }

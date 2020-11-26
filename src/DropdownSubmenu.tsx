@@ -35,7 +35,9 @@ export class DropdownSubmenu extends React.Component<Props> {
           className="dropdown-menu"
           ref={(ref) => (this.refSubMenuContent = ref)}
         >
-          {this.props.children}
+          <div className="dropdown-scroll-container">
+            {this.props.children}
+          </div>
         </div>
       </div>
     );
@@ -53,6 +55,11 @@ export class DropdownSubmenu extends React.Component<Props> {
         this.hideSibblings();
       }
       this.refSubMenuContent.classList.toggle('show');
+
+      if (show) {
+        DropdownSubmenu.scrollToTop(this.refSubMenuContent);
+      }
+      
       if (typeof this.props.onToggle === 'function') {
         this.props.onToggle(show, event, { source: 'select' });
       }
@@ -92,5 +99,12 @@ export class DropdownSubmenu extends React.Component<Props> {
       element = element.parentNode;
     }
     return nodes;
+  }
+
+  private static scrollToTop(parent: any) {
+    let children = parent.querySelectorAll(':scope > .dropdown-scroll-container') as any;
+    for (let child of children) {
+      child.scrollTop = 0;
+    }
   }
 }
