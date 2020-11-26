@@ -61,7 +61,8 @@ var NavDropdownMenu = /** @class */ (function (_super) {
     }
     NavDropdownMenu.prototype.render = function () {
         var _this = this;
-        return (React.createElement(react_bootstrap_1.NavDropdown, { className: this.props.className, ref: function (ref) { return (_this.refElement = ref); }, title: this.props.title, id: this.props.id, onToggle: this.onToggle, alignRight: this.props.alignRight, bg: this.props.bg, disabled: this.props.disabled, active: this.props.active, menuRole: this.props.menuRole, renderMenuOnMount: this.props.renderMenuOnMount, rootCloseEvent: this.props.rootCloseEvent, bsPrefix: this.props.bsPrefix, drop: this.props.drop, show: this.props.show, flip: this.props.flip, focusFirstItemOnShow: this.props.focusFirstItemOnShow }, this.props.children));
+        return (React.createElement(react_bootstrap_1.NavDropdown, { className: this.props.className ? this.props.className + ' dropdown-submenu-root' : 'dropdown-submenu-root', ref: function (ref) { return (_this.refElement = ref); }, title: this.props.title, id: this.props.id, onToggle: this.onToggle, alignRight: this.props.alignRight, bg: this.props.bg, disabled: this.props.disabled, active: this.props.active, menuRole: this.props.menuRole, renderMenuOnMount: this.props.renderMenuOnMount, rootCloseEvent: this.props.rootCloseEvent, bsPrefix: this.props.bsPrefix, drop: this.props.drop, show: this.props.show, flip: this.props.flip, focusFirstItemOnShow: this.props.focusFirstItemOnShow },
+            React.createElement("div", { className: "dropdown-scroll-container" }, this.props.children)));
     };
     return NavDropdownMenu;
 }(React.Component));

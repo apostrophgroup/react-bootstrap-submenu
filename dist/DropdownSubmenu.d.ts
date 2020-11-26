@@ -17,5 +17,6 @@ export declare class DropdownSubmenu extends React.Component<Props> {
     private hideSibblings;
     private static hideChildren;
     private static getParents;
+    private static scrollToTop;
 }
 export {};

@@ -53,6 +53,9 @@ var DropdownSubmenu = /** @class */ (function (_super) {
                     _this.hideSibblings();
                 }
                 _this.refSubMenuContent.classList.toggle('show');
+                if (show) {
+                    DropdownSubmenu.scrollToTop(_this.refSubMenuContent);
+                }
                 if (typeof _this.props.onToggle === 'function') {
                     _this.props.onToggle(show, event, { source: 'select' });
                 }
@@ -76,7 +79,8 @@ var DropdownSubmenu = /** @class */ (function (_super) {
             : className;
         return (React.createElement("div", { className: className },
             React.createElement("a", { href: this.props.href, className: "dropdown-item dropdown-submenu dropdown-toggle", onClick: this.onClick }, this.props.title),
-            React.createElement("div", { className: "dropdown-menu", ref: function (ref) { return (_this.refSubMenuContent = ref); } }, this.props.children)));
+            React.createElement("div", { className: "dropdown-menu", ref: function (ref) { return (_this.refSubMenuContent = ref); } },
+                React.createElement("div", { className: "dropdown-scroll-container" }, this.props.children))));
     };
     DropdownSubmenu.hideChildren = function (parent) {
         var children = parent.querySelectorAll('.dropdown-menu.show');
@@ -97,6 +101,13 @@ var DropdownSubmenu = /** @class */ (function (_super) {
             element = element.parentNode;
         }
         return nodes;
+    };
+    DropdownSubmenu.scrollToTop = function (parent) {
+        var children = parent.querySelectorAll(':scope > .dropdown-scroll-container');
+        for (var _i = 0, children_2 = children; _i < children_2.length; _i++) {
+            var child = children_2[_i];
+            child.scrollTop = 0;
+        }
     };
     return DropdownSubmenu;
 }(React.Component));
